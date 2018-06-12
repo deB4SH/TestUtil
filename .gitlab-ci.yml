@@ -36,7 +36,6 @@ roll:
     - master
     - integration
   script:
-    - git clone git@git.0x09.de:Maven/TestUtil.git -key /ssh/key mvn-repo
-    - mvn deploy
+    - ssh-agent bash -c 'ssh-add /ssh/key; git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo'
     - ls -l
 
