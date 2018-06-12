@@ -29,6 +29,7 @@ deploy:
   script:
     - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
     - eval "$(ssh-agent -s)"
+    - touch ~/.ssh/config
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - mkdir -p ${CI_PROJECT_DIR}/.ssh
     - cd ${CI_PROJECT_DIR}/.ssh
