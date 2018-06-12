@@ -16,7 +16,7 @@ stages:
 env:
   stage: prepare
   script:
-    - apt-get install git -y
+    - mkdir /ssh
     - echo $ssh | base64 -d > /ssh/key
 
 compile:
