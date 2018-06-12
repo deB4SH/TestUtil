@@ -37,6 +37,7 @@ roll:
     - master
     - integration
   script:
+    - chmod 400 ${CI_PROJECT_DIR}/.ssh/key.file
     - ssh-agent bash -c 'ssh-add ${CI_PROJECT_DIR}/.ssh/key.file; git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo'
     - ls -l
 
