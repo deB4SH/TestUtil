@@ -1,0 +1,3 @@
+[submodule "jQuality"]
+	path = jQuality
+	url = git@git.0x09.de:deB4SH/jQuality.git
