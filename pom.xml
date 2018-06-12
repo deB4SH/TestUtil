@@ -10,28 +10,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>holmes</id>
-            <name>Holmes</name>
-            <url>http://mvn.b4sh.de/repository/holmes/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>jcenter</id>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
-
     <!-- ARTIFACT RELATED CONTENT -->
 
     <groupId>de.b4sh</groupId>
@@ -41,6 +19,16 @@
     <!-- BUILD -->
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+            </plugins>
+
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -61,8 +49,24 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <altDeploymentRepository>internal.repo::default::file://${project.basedir}/../${project.name}-mvn-repo</altDeploymentRepository>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <!-- REPOSITORIES -->
+
+    <repositories>
+        <repository>
+            <id>TestUtilsRepository</id>
+            <url>https://git.0x09.de/deB4SH/TestUtil/raw/maven/</url>
+        </repository>
+    </repositories>
 
     <!-- DEPENDENCY -->
 
