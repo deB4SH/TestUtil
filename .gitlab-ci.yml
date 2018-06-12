@@ -4,7 +4,7 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .m2/
-    - /ssh/key
+    - /ssh
 
 variables:
   MAVEN_OPTS: -Dmaven.repo.local=${CI_PROJECT_DIR}/.m2
@@ -18,8 +18,8 @@ env:
   stage: prepare
   script:
     - mkdir /ssh
-    - echo $KEYFILE > /ssh/enc
-    - cat /ssh/enc | base64 -d > /ssh/key
+    - echo $KEYFILE > /ssh/enc.file
+    - cat /ssh/enc.file | base64 -d > /ssh/key.file
 
 compile:
   stage: build
