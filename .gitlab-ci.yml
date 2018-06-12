@@ -18,6 +18,7 @@ env:
   script:
     - mkdir /ssh
     - echo $KEYFILE > /ssh/enc
+    - ls -l /ssh
     - cat /ssh/enc | base64 -d > /ssh/key
 
 compile:
