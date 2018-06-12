@@ -4,23 +4,13 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .m2/
-    - .ssh/
 
 variables:
   MAVEN_OPTS: -Dmaven.repo.local=${CI_PROJECT_DIR}/.m2
 
 stages:
-  - prepare
   - build
   - deploy
-
-env:
-  stage: prepare
-  script:
-    - mkdir ${CI_PROJECT_DIR}/.ssh
-    - cd ${CI_PROJECT_DIR}/.ssh
-    - echo $KEYFILE > enc.file
-    - cat enc.file | base64 -d > key.file
 
 compile:
   stage: build
@@ -31,12 +21,16 @@ compile:
     - mvn clean
     - mvn install
 
-roll:
+deploy:
   stage: deploy
   only:
     - master
     - integration
   script:
+    - mkdir ${CI_PROJECT_DIR}/.ssh
+    - cd ${CI_PROJECT_DIR}/.ssh
+    - echo $KEYFILE > enc.file
+    - cat enc.file | base64 -d > key.file
     - chmod 400 ${CI_PROJECT_DIR}/.ssh/key.file
     - ssh-agent bash -c 'ssh-add ${CI_PROJECT_DIR}/.ssh/key.file; git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo'
     - ls -l
