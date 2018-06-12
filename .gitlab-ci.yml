@@ -1,0 +1,19 @@
+image: maven:latest
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .m2/
+
+variables:
+  MAVEN_OPTS: -Dmaven.repo.local=${CI_PROJECT_DIR}/.m2
+
+compile:
+  artifacts:
+    paths:
+        - target/*.jar
+  script:
+    - mvn clean
+    - mvn compile
+    - mvn test
+    - mvn install
