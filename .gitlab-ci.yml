@@ -32,10 +32,10 @@ deploy:
     - mkdir -p ${CI_PROJECT_DIR}/.ssh
     - cd ${CI_PROJECT_DIR}/.ssh
     - echo $KEYFILE > enc.file
-    - cat enc.file | base64 -d > key.file
-    - chmod 400 ${CI_PROJECT_DIR}/.ssh/key.file
+    - cat enc.file | base64 -d > id_rsa
+    - chmod 400 ${CI_PROJECT_DIR}/.ssh/id_rsa
     - cd ${CI_PROJECT_DIR}
-    - ssh-add ${CI_PROJECT_DIR}/.ssh/key.file
+    - ssh-add ${CI_PROJECT_DIR}/.ssh/id_rsa
     - git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo
     - ls -l
 
