@@ -26,9 +26,10 @@ deploy:
   only:
     - master
     - integration
+  before_script:
+    - git config --global user.email "butler@git.0x09.de"
+    - git config --global user.name "CI Butler"
   script:
-    - which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )
-    - eval "$(ssh-agent -s)"
     - mkdir -p ~/.ssh/ && touch ~/.ssh/config && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - mkdir -p ${CI_PROJECT_DIR}/.ssh
     - cd ${CI_PROJECT_DIR}/.ssh
@@ -38,10 +39,7 @@ deploy:
     - cd ${CI_PROJECT_DIR}
     - ssh-add ${CI_PROJECT_DIR}/.ssh/id_rsa
     - git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo/
-    - ls -l
     - mvn deploy
     - cd mvn-repo
-    - git config --global user.email "butler@git.0x09.de"
-    - git config --global user.name "CI Butler"
     - git add . && git commit -am 'latest artifact' && git push
 
