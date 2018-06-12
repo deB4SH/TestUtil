@@ -39,4 +39,7 @@ deploy:
     - ssh-add ${CI_PROJECT_DIR}/.ssh/id_rsa
     - git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo/
     - ls -l
+    - mvn deploy
+    - cd mvn-repo
+    - git add . && git commit -am 'latest artifact' && git push
 
