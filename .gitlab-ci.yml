@@ -33,6 +33,7 @@ deploy:
     - cat enc.file | base64 -d > key.file
     - chmod 400 ${CI_PROJECT_DIR}/.ssh/key.file
     - cd ${CI_PROJECT_DIR}
+    - ssh-keygen -R git.0x09.de
     - ssh-agent bash -c 'ssh-add ${CI_PROJECT_DIR}/.ssh/key.file; git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo'
     - ls -l
 
