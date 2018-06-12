@@ -41,5 +41,7 @@ deploy:
     - ls -l
     - mvn deploy
     - cd mvn-repo
+    - git config --global user.email "butler@git.0x09.de"
+    - git config --global user.name "CI Butler"
     - git add . && git commit -am 'latest artifact' && git push
 
