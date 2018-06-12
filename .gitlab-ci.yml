@@ -8,12 +8,33 @@ cache:
 variables:
   MAVEN_OPTS: -Dmaven.repo.local=${CI_PROJECT_DIR}/.m2
 
+stages:
+  - prepare
+  - build
+  - deploy
+
+env:
+  stage: prepare
+  script:
+    - apt-get install git -y
+    - echo $ssh | base64 -d > /ssh/key
+
 compile:
+  stage: build
   artifacts:
     paths:
         - target/*.jar
   script:
     - mvn clean
-    - mvn compile
-    - mvn test
     - mvn install
+
+roll:
+  stage: deploy
+  only:
+    - master
+    - integration
+  script:
+    - git clone git@git.0x09.de:Maven/TestUtil.git -key /ssh/key mvn-repo
+    - mvn deploy
+    - ls -l
+
