@@ -17,6 +17,7 @@ env:
   stage: prepare
   script:
     - mkdir /ssh
+    - echo $KEYFILE
     - echo $KEYFILE | base64 -d > /ssh/key
 
 compile:
