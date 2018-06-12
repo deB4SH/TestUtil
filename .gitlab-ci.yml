@@ -30,6 +30,7 @@ deploy:
     - git config --global user.email "butler@git.0x09.de"
     - git config --global user.name "CI Butler"
   script:
+    - eval "$(ssh-agent -s)"
     - mkdir -p ~/.ssh/ && touch ~/.ssh/config && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - mkdir -p ${CI_PROJECT_DIR}/.ssh
     - cd ${CI_PROJECT_DIR}/.ssh
