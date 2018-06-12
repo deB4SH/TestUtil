@@ -36,6 +36,6 @@ deploy:
     - chmod 400 ${CI_PROJECT_DIR}/.ssh/id_rsa
     - cd ${CI_PROJECT_DIR}
     - ssh-add ${CI_PROJECT_DIR}/.ssh/id_rsa
-    - git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo
+    - git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo/
     - ls -l
 
