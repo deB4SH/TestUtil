@@ -14,32 +14,10 @@ stages:
 
 compile:
   stage: build
+  tags:
+    - homelab
   artifacts:
     paths:
         - target/*.jar
   script:
-    - mvn clean
-    - mvn install
-
-deploy:
-  stage: deploy
-  only:
-    - master
-  before_script:
-    - git config --global user.email "butler@git.0x09.de"
-    - git config --global user.name "CI Butler"
-  script:
-    - eval "$(ssh-agent -s)"
-    - mkdir -p ~/.ssh/ && touch ~/.ssh/config && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - mkdir -p ${CI_PROJECT_DIR}/.ssh
-    - cd ${CI_PROJECT_DIR}/.ssh
-    - echo $KEYFILE > enc.file
-    - cat enc.file | base64 -d > id_rsa
-    - chmod 400 ${CI_PROJECT_DIR}/.ssh/id_rsa
-    - cd ${CI_PROJECT_DIR}
-    - ssh-add ${CI_PROJECT_DIR}/.ssh/id_rsa
-    - git clone git@git.0x09.de:Maven/TestUtil.git mvn-repo/
-    - mvn deploy
-    - cd mvn-repo
-    - git add . && git commit -am 'latest artifact' && git push
-
+    - mvn clean install
