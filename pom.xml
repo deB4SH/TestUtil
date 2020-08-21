@@ -4,31 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- PARENT AND REPOSITORY -->
-
-    <properties>
+        <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <!-- ARTIFACT RELATED CONTENT -->
 
     <groupId>de.b4sh</groupId>
     <artifactId>TestUtils</artifactId>
     <version>0.0.0-SNAPSHOT</version>
 
-    <!-- BUILD -->
-
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8.2</version>
-                </plugin>
-            </plugins>
-
-        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -49,26 +33,8 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${project.basedir}/mvn-repo</altDeploymentRepository>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-
-    <!-- REPOSITORIES -->
-
-    <repositories>
-        <repository>
-            <id>TestUtilsRepository</id>
-            <url>https://git.0x09.de/deB4SH/TestUtil/raw/maven/</url>
-        </repository>
-    </repositories>
-
-    <!-- DEPENDENCY -->
 
     <dependencies>
         <dependency>
@@ -78,8 +44,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <!-- GENERAL -->
 
     <licenses>
         <license>
