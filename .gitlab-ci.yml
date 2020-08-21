@@ -21,3 +21,15 @@ compile:
         - target/*.jar
   script:
     - mvn clean install
+
+deploy:
+  stage: deploy
+  needs: ["compile"]
+  tags:
+    - homelab
+  artifacts:
+    paths:
+    - target/*.jar
+  script:
+    - echo "Hello World"
+    #- mvn deploy #TODO: setup settings.xml for this project
