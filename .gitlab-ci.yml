@@ -9,15 +9,7 @@ variables:
   MAVEN_OPTS: -Dmaven.repo.local=${CI_PROJECT_DIR}/.m2
 
 stages:
-  - prepare
   - build
-
-prepare:
-  stage: prepare
-  tags:
-    - homelab
-  script:
-    - echo "$MVN_SETTINGS" > "${CI_PROJECT_DIR}/settings.xml"
 
 compile:
   stage: build
@@ -28,5 +20,6 @@ compile:
     paths:
         - target/*.jar
   script:
+    - echo "$MVN_SETTINGS" >> "${CI_PROJECT_DIR}/settings.xml"
     - mvn clean install -s ${CI_PROJECT_DIR}/settings.xml
     - mvn deploy -s ${CI_PROJECT_DIR}/settings.xml
