@@ -75,22 +75,4 @@
         </snapshotRepository>
     </distributionManagement>
 
-    <profiles>
-        <profile>
-            <id>homelab</id>
-            <distributionManagement>
-                <repository>
-                    <id>lab</id>
-                    <name>Releases</name>
-                    <url>http://192.168.178.162:8081/repository/lab-releases</url>
-                </repository>
-                <snapshotRepository>
-                    <id>lab</id>
-                    <name>Snapshot</name>
-                    <url>http://192.168.178.162:8081/repository/lab-snapshots</url>
-                </snapshotRepository>
-            </distributionManagement>
-        </profile>
-    </profiles>
-
 </project>

@@ -31,14 +31,4 @@ compile:
         - target/*.jar
   script:
     - mvn clean install
-
-deploy:
-  stage: deploy
-  needs: ["compile"]
-  tags:
-    - homelab
-  artifacts:
-    paths:
-    - target/*.jar
-  script:
-    - mvn deploy -P homelab
+    - mvn mvn deploy
