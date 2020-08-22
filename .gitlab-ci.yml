@@ -17,7 +17,7 @@ stages:
 prepare:
   stage: prepare
   tags:
-    - homelabe
+    - homelab
   script:
     - echo "$MVN_SETTINGS" > "${CI_PROJECT_DIR}/.m2/settings.xml"
 
@@ -25,7 +25,7 @@ compile:
   stage: build
   needs: ["prepare"]
   tags:
-    - homelabe
+    - homelab
   artifacts:
     paths:
         - target/*.jar
@@ -36,7 +36,7 @@ deploy:
   stage: deploy
   needs: ["compile"]
   tags:
-    - homelabe
+    - homelab
   artifacts:
     paths:
     - target/*.jar
