@@ -11,8 +11,6 @@ variables:
 stages:
   - prepare
   - build
-  - deploy
-
 
 prepare:
   stage: prepare
