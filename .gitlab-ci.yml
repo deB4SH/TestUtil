@@ -13,7 +13,6 @@ stages:
 
 compile:
   stage: build
-  needs: ["prepare"]
   tags:
     - homelab
   artifacts:
