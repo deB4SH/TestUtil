@@ -66,12 +66,12 @@
         <repository>
             <id>lab</id>
             <name>Releases</name>
-            <url>https://mvn.0x09.de/repository/maven-releases</url>
+            <url>https://mvn.0x09.de/repository/lab-releases</url>
         </repository>
         <snapshotRepository>
             <id>lab</id>
             <name>Snapshot</name>
-            <url>https://mvn.0x09.de/repository/maven-snapshots</url>
+            <url>https://mvn.0x09.de/repository/lab-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
@@ -82,12 +82,12 @@
                 <repository>
                     <id>lab</id>
                     <name>Releases</name>
-                    <url>https://192.168.178.162:8081/repository/maven-releases</url>
+                    <url>https://192.168.178.162:8081/repository/lab-releases</url>
                 </repository>
                 <snapshotRepository>
                     <id>lab</id>
                     <name>Snapshot</name>
-                    <url>https://192.168.178.162:8081/repository/maven-snapshots</url>
+                    <url>https://192.168.178.162:8081/repository/lab-snapshots</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
