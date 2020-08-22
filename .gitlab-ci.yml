@@ -19,6 +19,6 @@ compile:
     paths:
         - target/*.jar
   script:
-    - echo "$MVN_SETTINGS" >> "${CI_PROJECT_DIR}/settings.xml"
+    - echo "$MVN_SETTINGS" > "${CI_PROJECT_DIR}/settings.xml"
     - mvn clean install -s ${CI_PROJECT_DIR}/settings.xml
     - mvn deploy -s ${CI_PROJECT_DIR}/settings.xml
