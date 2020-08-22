@@ -20,5 +20,7 @@ compile:
     paths:
         - target/*.jar
   script:
+    - printenv
+    - echo "$MAVEN_REPO_USER"
     - mvn clean install
     - mvn deploy -e -X
