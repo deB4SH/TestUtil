@@ -29,4 +29,4 @@ compile:
         - target/*.jar
   script:
     - mvn clean install
-    - mvn mvn deploy
+    - mvn deploy
