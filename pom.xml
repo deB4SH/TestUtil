@@ -66,12 +66,12 @@
         <repository>
             <id>lab</id>
             <name>Releases</name>
-            <url>https://mvn.0x09.de/repository/lab-releases</url>
+            <url>https://mvn.0x09.de/repository/lab-release/</url>
         </repository>
         <snapshotRepository>
             <id>lab</id>
             <name>Snapshot</name>
-            <url>https://mvn.0x09.de/repository/lab-snapshots</url>
+            <url>https://mvn.0x09.de/repository/lab-snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
 
