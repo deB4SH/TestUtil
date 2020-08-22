@@ -62,4 +62,35 @@
         </developer>
     </developers>
 
+    <distributionManagement>
+        <repository>
+            <id>lab</id>
+            <name>Releases</name>
+            <url>https://mvn.0x09.de/repository/maven-releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>lab</id>
+            <name>Snapshot</name>
+            <url>https://mvn.0x09.de/repository/maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>homelab</id>
+            <distributionManagement>
+                <repository>
+                    <id>lab</id>
+                    <name>Releases</name>
+                    <url>https://192.168.178.162:8081/repository/maven-releases</url>
+                </repository>
+                <snapshotRepository>
+                    <id>lab</id>
+                    <name>Snapshot</name>
+                    <url>https://192.168.178.162:8081/repository/maven-snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
 </project>
