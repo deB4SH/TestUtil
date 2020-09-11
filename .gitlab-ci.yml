@@ -19,6 +19,5 @@ compile:
     paths:
         - target/*.jar
   script:
-    - printenv
-    - mvn clean install -s .m2/settings.xml
-    - mvn deploy -s .m2/settings.xml -e -X
+    - mvn clean install -s settings.xml
+    - mvn deploy -s settings.xml
