@@ -1,9 +1,9 @@
 image: maven:latest
 
-#cache:
-#  key: ${CI_COMMIT_REF_SLUG}
-#  paths:
-#    - .m2cache/repository
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .m2cache/repository
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2cache/repository"
