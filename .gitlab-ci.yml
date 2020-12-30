@@ -1,23 +1,31 @@
 image: maven:latest
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - .m2cache/repository
-
 variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2cache/repository"
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
-stages:
-  - build
+cache:
+  paths:
+    - .m2/repository/
+    - target/
 
-compile:
+build:
   stage: build
   tags:
     - homelab
-  artifacts:
-    paths:
-        - target/*.jar
   script:
-    - mvn clean install -s settings.xml
-    - mvn deploy -s settings.xml
+    - mvn $MAVEN_CLI_OPTS compile
+
+test:
+  stage: test
+  tags:
+    - homelab
+  script:
+    - mvn $MAVEN_CLI_OPTS test
+
+deploy:
+  stage: deploy
+  script:
+    - mvn $MAVEN_CLI_OPTS deploy
+  only:
+    - master
