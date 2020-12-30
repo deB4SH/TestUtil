@@ -25,6 +25,8 @@ test:
 
 deploy:
   stage: deploy
+  tags:
+    - homelab
   script:
     - mvn $MAVEN_CLI_OPTS deploy
   only:
