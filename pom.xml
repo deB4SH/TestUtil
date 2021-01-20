@@ -107,11 +107,11 @@
     <distributionManagement>
         <repository>
             <id>lab</id>
-            <url>https://mvn.0x09.de/repository/lab-release/</url>
+            <url>https://mvn.0x09.de/repository/maven-public-release/</url>
         </repository>
         <snapshotRepository>
             <id>lab</id>
-            <url>https://mvn.0x09.de/repository/lab-snapshot/</url>
+            <url>https://mvn.0x09.de/repository/maven-public-snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
 
