@@ -23,7 +23,7 @@ versionset:
     - export versionNumber=$(echo ${CI_COMMIT_BRANCH} | sed -E 's/release\/([0-9a-zA-Z.\\-]+)/\1/')
     - mvn $MAVEN_CLI_OPTS versions:set -DnewVersion=${versionNumber}
   only:
-    - release/*
+    - /^release/.*$/
   artifacts:
     paths:
       - pom.xml
@@ -53,9 +53,6 @@ test:
   script:
     - mvn $MAVEN_CLI_OPTS test
   artifacts:
-    paths:
-      - target/reports/index.html
-    expire_in: 1 days
     reports:
       junit:
         - target/reports/TEST-*.xml
@@ -72,5 +69,5 @@ deploy:
   script:
     - mvn $MAVEN_CLI_OPTS deploy
   only:
+    - /^release/.*$/
     - master
-    - release/*
