@@ -10,3 +10,4 @@ target/
 .settings/org.eclipse.m2e.core.prefs
 .repo/
 .m2/settings_local.xml
+.settings/
