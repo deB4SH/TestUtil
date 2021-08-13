@@ -72,6 +72,17 @@ pipeline{
                 }
             }
         }
+        stage ('deploy: whenRelease') {
+            when {
+                branch 'release/*'
+            }
+            steps {
+                withCredentials([file(credentialsId: 'settings_xml', variable: 'settings')]) {
+                   sh "cp \$settings_xml ./.m2_settings.xml"
+                }
+                sh 'mvn deploy -s ./.m2_settings.xml -f pom.xml'
+            }
+        }
     }
 
 }
