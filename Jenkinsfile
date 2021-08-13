@@ -85,9 +85,9 @@ pipeline{
             }
             steps {
                 withCredentials([file(credentialsId: 'settings_xml', variable: 'settings')]) {
-                   sh "cp \$settings_xml ./.m2_settings.xml"
+                   writeFile file: '.settings/.m2_settings.xml', text: readFile(settings)
                 }
-                sh 'mvn deploy -s ./.m2_settings.xml -f pom.xml'
+                sh 'mvn deploy -s .settings/.m2_settings.xml -f pom.xml'
             }
         }
     }
