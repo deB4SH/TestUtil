@@ -11,6 +11,13 @@ pipeline{
             defaultContainer 'maven'
         }
     }
+    //options
+    options{
+            disableConcurrentBuilds()
+            buildDiscarder(logRotator(numToKeepStr: '5'))
+            disableResume()
+            timeout(time: 2, unit: 'HOURS')
+    }
     //define trigger
     triggers{
         pollSCM 'H/30 * * * *'
