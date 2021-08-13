@@ -9,7 +9,7 @@
     </properties>
 
     <groupId>de.b4sh</groupId>
-    <artifactId>TestUtils</artifactId>
+    <artifactId>testutil</artifactId>
     <version>0.0.0-SNAPSHOT</version>
 
     <build>
@@ -103,5 +103,14 @@
             <id>deB4SH</id>
         </developer>
     </developers>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/deb4sh/testutil</url>
+        </repository>
+    </distributionManagement>
+
 
 </project>
