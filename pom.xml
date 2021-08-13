@@ -104,15 +104,4 @@
         </developer>
     </developers>
 
-    <distributionManagement>
-        <repository>
-            <id>lab</id>
-            <url>https://mvn.0x09.de/repository/maven-public-release/</url>
-        </repository>
-        <snapshotRepository>
-            <id>lab</id>
-            <url>https://mvn.0x09.de/repository/maven-public-snapshot/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
 </project>
